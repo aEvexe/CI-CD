@@ -8,12 +8,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        shell: powershell
-        run: |
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-          npm ci
+        shell: cmd
+        run: npm ci
 
       - name: Lint Check
+        shell: cmd
         run: npm run lint
 
   test:
@@ -31,12 +30,11 @@ jobs:
           node-version: ${{matrix.version}}
 
       - name: Install dependencies
-        shell: powershell
-        run: |
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-          npm ci
+        shell: cmd
+        run: npm ci
 
       - name: Test Check
+        shell: cmd
         env:
           PORT: ${{secrets.PORT}}
         run: npm run test
